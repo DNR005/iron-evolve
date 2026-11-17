@@ -105,11 +105,12 @@ python manage.py runserver 127.0.0.1:8000
 
 ### 3. Frontend Setup (React + Tailwind)
 ```sh
+cd frontend
 npm install
 npm run dev
 ```
 
-The frontend will run at `http://localhost:3000` and communicate with Django at `http://127.0.0.1:8000/api/`.
+The frontend will run at `http://localhost:8080` (or `http://localhost:3000`) and communicate with Django at `http://127.0.0.1:8000/api/`.
 
 ---
 
@@ -145,26 +146,30 @@ iron-evolve/
 │   ├── manage.py                  # Django CLI
 │   └── requirements.txt           # Python dependencies
 │
-├── src/                           # React Frontend
-│   ├── components/
-│   │   ├── forge/                 # AppShell, Navigation, Panels, StatCards
-│   │   └── ui/                    # Radix UI design system primitives
-│   ├── lib/
-│   │   ├── api.ts                 # Centralized API client connecting to Django
-│   │   └── forge-data.ts          # Static workout library & fallback datasets
-│   ├── routes/                    # File-based TanStack routes
-│   │   ├── index.tsx              # Command Center / Dashboard
-│   │   ├── workouts.tsx           # Programs & Custom Builder
-│   │   ├── nutrition.tsx          # Macro & Hydration Tracker
-│   │   ├── assistant.tsx          # FORGE AI (Ollama Local Chat)
-│   │   ├── progress.tsx           # Charts & Badges
-│   │   ├── bmi.tsx                # BMI Calculator
-│   │   └── settings.tsx           # Biometrics & Preferences
-│   └── styles.css                 # Tailwind CSS v4 design tokens & glow utilities
+├── frontend/                      # React Frontend
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── forge/             # AppShell, Navigation, Panels, StatCards
+│   │   │   └── ui/                # Radix UI design system primitives
+│   │   ├── lib/
+│   │   │   ├── api.ts             # Centralized API client connecting to Django
+│   │   │   └── forge-data.ts      # Static workout library & fallback datasets
+│   │   ├── routes/                # File-based TanStack routes
+│   │   │   ├── index.tsx          # Command Center / Dashboard
+│   │   │   ├── workouts.tsx       # Programs & Custom Builder
+│   │   │   ├── nutrition.tsx      # Macro & Hydration Tracker
+│   │   │   ├── assistant.tsx      # FORGE AI (Ollama Local Chat)
+│   │   │   ├── progress.tsx       # Charts & Badges
+│   │   │   ├── bmi.tsx            # BMI Calculator
+│   │   │   └── settings.tsx       # Biometrics & Preferences
+│   │   └── styles.css             # Tailwind CSS v4 design tokens & glow utilities
+│   ├── public/                    # Static assets & icons
+│   ├── vite.config.ts             # Vite bundler configuration
+│   ├── tsconfig.json              # TypeScript configuration
+│   └── package.json               # Node dependencies & scripts
 │
 ├── start.bat                      # 1-click Windows launcher for Ollama, Django & React
-├── vite.config.ts                 # Vite bundler configuration
-└── package.json                   # Node dependencies & scripts
+└── README.md                      # Documentation & API reference
 ```
 
 ---

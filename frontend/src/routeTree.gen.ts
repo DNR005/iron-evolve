@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AssistantRouteImport } from './routes/assistant'
 import { Route as BmiRouteImport } from './routes/bmi'
-import { Route as MusicRouteImport } from './routes/music'
 import { Route as NutritionRouteImport } from './routes/nutrition'
 import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as SettingsRouteImport } from './routes/settings'
@@ -31,11 +30,6 @@ const AssistantRoute = AssistantRouteImport.update({
 const BmiRoute = BmiRouteImport.update({
   id: '/bmi',
   path: '/bmi',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MusicRoute = MusicRouteImport.update({
-  id: '/music',
-  path: '/music',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NutritionRoute = NutritionRouteImport.update({
@@ -63,7 +57,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assistant': typeof AssistantRoute
   '/bmi': typeof BmiRoute
-  '/music': typeof MusicRoute
   '/nutrition': typeof NutritionRoute
   '/progress': typeof ProgressRoute
   '/settings': typeof SettingsRoute
@@ -73,7 +66,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assistant': typeof AssistantRoute
   '/bmi': typeof BmiRoute
-  '/music': typeof MusicRoute
   '/nutrition': typeof NutritionRoute
   '/progress': typeof ProgressRoute
   '/settings': typeof SettingsRoute
@@ -84,7 +76,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/assistant': typeof AssistantRoute
   '/bmi': typeof BmiRoute
-  '/music': typeof MusicRoute
   '/nutrition': typeof NutritionRoute
   '/progress': typeof ProgressRoute
   '/settings': typeof SettingsRoute
@@ -96,7 +87,6 @@ export interface FileRouteTypes {
     | '/'
     | '/assistant'
     | '/bmi'
-    | '/music'
     | '/nutrition'
     | '/progress'
     | '/settings'
@@ -106,7 +96,6 @@ export interface FileRouteTypes {
     | '/'
     | '/assistant'
     | '/bmi'
-    | '/music'
     | '/nutrition'
     | '/progress'
     | '/settings'
@@ -116,7 +105,6 @@ export interface FileRouteTypes {
     | '/'
     | '/assistant'
     | '/bmi'
-    | '/music'
     | '/nutrition'
     | '/progress'
     | '/settings'
@@ -127,7 +115,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssistantRoute: typeof AssistantRoute
   BmiRoute: typeof BmiRoute
-  MusicRoute: typeof MusicRoute
   NutritionRoute: typeof NutritionRoute
   ProgressRoute: typeof ProgressRoute
   SettingsRoute: typeof SettingsRoute
@@ -155,13 +142,6 @@ declare module '@tanstack/react-router' {
       path: '/bmi'
       fullPath: '/bmi'
       preLoaderRoute: typeof BmiRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/music': {
-      id: '/music'
-      path: '/music'
-      fullPath: '/music'
-      preLoaderRoute: typeof MusicRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/nutrition': {
@@ -199,7 +179,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AssistantRoute: AssistantRoute,
   BmiRoute: BmiRoute,
-  MusicRoute: MusicRoute,
   NutritionRoute: NutritionRoute,
   ProgressRoute: ProgressRoute,
   SettingsRoute: SettingsRoute,

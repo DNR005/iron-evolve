@@ -33,11 +33,15 @@ echo [*] Ensuring database seed...
 
 echo.
 echo [3/4] Launching Django REST API on http://127.0.0.1:8000 ...
-start "FORGE AI - Django Backend" cmd /k "cd /d "%~dp0" && backend\venv\Scripts\python.exe backend\manage.py runserver 127.0.0.1:8000"
+start "FORGE AI - Django Backend" cmd /k "cd /d "%~dp0backend" && venv\Scripts\python.exe manage.py runserver 127.0.0.1:8000"
 
 echo.
 echo [4/4] Launching React Frontend and opening browser...
-start "FORGE AI - React Frontend" cmd /k "cd /d "%~dp0" && npm run dev -- --open"
+if not exist "%~dp0frontend\node_modules\" (
+    echo [!] Frontend dependencies not found. Installing packages...
+    cd /d "%~dp0frontend" && call npm install && cd /d "%~dp0"
+)
+start "FORGE AI - React Frontend" cmd /k "cd /d "%~dp0frontend" && npm run dev -- --open"
 
 echo.
 echo ================================================================
