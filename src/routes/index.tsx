@@ -28,7 +28,7 @@ import {
 import { AppShell } from "@/components/forge/AppShell";
 import { ForgeButton, Panel, PanelTitle, Pill, StatCard } from "@/components/forge/Panel";
 import { forgeApi } from "@/lib/api";
-import { recentActivity as defaultRecent, weeklyActivity, weightSeries as defaultWeight } from "@/lib/forge-data";
+import { recentActivity as defaultRecent, weeklyActivity, weightSeries } from "@/lib/forge-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
