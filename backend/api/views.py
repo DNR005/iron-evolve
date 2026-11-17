@@ -1,7 +1,20 @@
+import json
 import random
+import urllib.error
+import urllib.request
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+OLLAMA_URL = "http://localhost:11434/api/chat"
+OLLAMA_MODEL = "hf.co/Qwen/Qwen3-1.7B-GGUF:Q8_0"
+
+FORGE_SYSTEM_PROMPT = (
+    "You are FORGE AI, an elite tactical fitness intelligence core inspired by Iron Man's JARVIS and Batman's dark-tech systems. "
+    "Your tone is disciplined, authoritative, concise, and razor-sharp. "
+    "You provide expert guidance on bodybuilding, progressive overload, biomechanics, caloric budgeting, macro splits, and fat loss. "
+    "Answer directly in concise markdown format with bold highlights and clean bullet points. Avoid unnecessary filler."
+)
 
 from .models import (
     WorkoutProgram,
@@ -158,7 +171,7 @@ class AIChatView(APIView):
         # Save user message
         ChatMessage.objects.create(sender="user", message=user_text)
 
-        # Generate intelligent contextual FORGE AI response
+        # Generate intelligent contextual FORGE AI response using Ollama Qwen3-1.7B
         ai_reply = self.generate_forge_reply(user_text)
 
         # Save AI reply
@@ -166,7 +179,38 @@ class AIChatView(APIView):
         serializer = ChatMessageSerializer(ai_msg)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+    def query_ollama(self, prompt: str) -> str:
+        payload = {
+            "model": OLLAMA_MODEL,
+            "messages": [
+                {"role": "system", "content": FORGE_SYSTEM_PROMPT},
+                {"role": "user", "content": prompt},
+            ],
+            "stream": False,
+        }
+        req = urllib.request.Request(
+            OLLAMA_URL,
+            data=json.dumps(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+            content = data.get("message", {}).get("content", "").strip()
+            if content:
+                return content
+        return ""
+
     def generate_forge_reply(self, prompt: str) -> str:
+        # First priority: Query local Ollama Qwen3-1.7B
+        try:
+            ollama_ans = self.query_ollama(prompt)
+            if ollama_ans:
+                return ollama_ans
+        except Exception:
+            # Fallback to local heuristic engine if Ollama is unreachable
+            pass
+
         p = prompt.lower()
 
         if "push" in p or "chest" in p:

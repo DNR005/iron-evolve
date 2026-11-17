@@ -149,7 +149,7 @@ export function AssistantPage() {
       subtitle="Jarvis-class tactical fitness intelligence"
       actions={
         <div className="flex items-center gap-3">
-          <Pill tone="primary">Neural Core v4.2</Pill>
+          <Pill tone="primary">Ollama Qwen3-1.7B Active</Pill>
           <ForgeButton variant="ghost" onClick={handleClear} className="text-xs">
             <Trash2 className="size-3.5" /> Clear HUD
           </ForgeButton>
@@ -183,7 +183,7 @@ export function AssistantPage() {
                 <span className="relative inline-flex size-2.5 rounded-full bg-primary" />
               </span>
               <span className="text-xs font-semibold tracking-widest text-primary uppercase">
-                JARVIS MATRIX // SECURE CONNECTION
+                JARVIS MATRIX // OLLAMA QWEN3-1.7B LOCAL ENGINE
               </span>
             </div>
             <div className="text-[11px] text-muted-foreground">Status: Synchronized</div>

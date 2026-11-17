@@ -290,6 +290,12 @@ Continue developing this project in the [Lovable editor](https://lovable.dev/pro
 - **Stay in sync**: every change made in Lovable is committed straight to this repository.
 - **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
+## AI Integration (Local Ollama Engine)
+
+FORGE AI utilizes local LLM inference powered by **Ollama**:
+- **Model**: `hf.co/Qwen/Qwen3-1.7B-GGUF:Q8_0`
+- **Fallback Engine**: Built-in deterministic biomechanics & tactical nutrition heuristic core if Ollama is paused.
+
 ## Quick Start (Single Windows Batch File)
 
 Double click `start.bat` or run in terminal:
@@ -299,10 +305,11 @@ start.bat
 ```
 
 This will automatically:
-1. Initialize the Python virtual environment and install Django dependencies.
-2. Run database migrations and seed default workouts, meals, biometrics, and neural assistant directives.
-3. Start the Django backend REST API server on `http://127.0.0.1:8000/api/`.
-4. Launch the React + Tailwind frontend development server.
+1. Verify Ollama local service and calibrate `hf.co/Qwen/Qwen3-1.7B-GGUF:Q8_0`.
+2. Initialize the Python virtual environment and install Django dependencies.
+3. Run database migrations and seed default workouts, meals, biometrics, and neural assistant directives.
+4. Start the Django backend REST API server on `http://127.0.0.1:8000/api/`.
+5. Launch the React + Tailwind frontend development server.
 
 ## Manual Development
 
