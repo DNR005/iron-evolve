@@ -7,7 +7,7 @@ echo ================================================================
 echo               FORGE AI - TACTICAL FITNESS CORE
 echo ================================================================
 echo.
-echo [1/4] Checking Ollama Local Neural Core...
+echo [1/5] Checking Ollama Local Neural Core...
 curl -s http://localhost:11434/api/tags >nul 2>&1
 if %errorlevel% neq 0 (
     echo [!] Ollama service not detected on localhost:11434. Starting Ollama...
@@ -18,7 +18,7 @@ if %errorlevel% neq 0 (
 )
 
 echo.
-echo [2/4] Checking environment & initializing database...
+echo [2/5] Checking Python backend environment...
 if not exist "%~dp0backend\venv\Scripts\python.exe" (
     echo [!] Virtual environment not found. Creating backend\venv...
     python -m venv "%~dp0backend\venv"
@@ -32,11 +32,18 @@ echo [*] Ensuring initial database seed...
 "%~dp0backend\venv\Scripts\python.exe" "%~dp0backend\manage.py" seed_data
 
 echo.
-echo [3/4] Launching Django Backend Core (Port 8000)...
+echo [3/5] Checking Frontend dependencies...
+if not exist "%~dp0node_modules\" (
+    echo [!] Frontend node_modules not found. Installing packages...
+    call npm install
+)
+
+echo.
+echo [4/5] Launching Django Backend Core (Port 8000)...
 start "FORGE AI [Django Backend :8000]" cmd /k "cd /d %~dp0 && backend\venv\Scripts\python.exe backend\manage.py runserver 127.0.0.1:8000"
 
 echo.
-echo [4/4] Launching React + Tailwind Frontend Core...
+echo [5/5] Launching React + Tailwind Frontend Core...
 start "FORGE AI [React Frontend]" cmd /k "cd /d %~dp0 && npm run dev"
 
 echo.
@@ -46,7 +53,12 @@ echo ================================================================
 echo  * AI Model:       hf.co/Qwen/Qwen3-1.7B-GGUF:Q8_0 (Ollama Local)
 echo  * Backend API:    http://127.0.0.1:8000/api/
 echo  * Admin Console:  http://127.0.0.1:8000/admin/
-echo  * React Frontend: Check the frontend terminal window (default :3000)
+echo  * React Frontend: http://localhost:3000
 echo ================================================================
+echo Opening application in default browser in 3 seconds...
+timeout /t 3 >nul
+start http://localhost:3000
+
+echo.
 echo Press any key to close this launcher monitor (servers remain running)...
 pause >nul

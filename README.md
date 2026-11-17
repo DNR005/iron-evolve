@@ -278,18 +278,6 @@ Create a responsive desktop-first application that also works properly on tablet
 
 The final result should feel like a real startup product, not a college project.
 
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://iron-evolve.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/3be46233-e599-480c-aff8-c014f06e4938).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
 ## AI Integration (Local Ollama Engine)
 
 FORGE AI utilizes local LLM inference powered by **Ollama**:
