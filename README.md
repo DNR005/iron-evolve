@@ -1,307 +1,99 @@
-# Forge Your Strength
+# FORGE AI — Forge Your Strongest Self
 
-Build a premium full-stack fitness web application called FORGE AI.
+[![React 19](https://img.shields.io/badge/Frontend-React_19-blue?style=for-the-badge&logo=react)](https://react.dev/)
+[![Tailwind CSS v4](https://img.shields.io/badge/Styling-Tailwind_CSS_v4-38bdf8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
+[![Django 6](https://img.shields.io/badge/Backend-Django_6_REST-092e20?style=for-the-badge&logo=django)](https://www.djangoproject.com/)
+[![Ollama](https://img.shields.io/badge/AI_Engine-Ollama_Qwen3--1.7B-black?style=for-the-badge&logo=ollama)](https://ollama.com/)
+[![Vite 8](https://img.shields.io/badge/Bundler-Vite_8-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
 
-FORGE AI is an intelligent AI-powered fitness assistant that helps users build their body.
+**FORGE AI** is an intelligent full-stack fitness command center designed with an Iron Man / JARVIS and Batman dark-tech aesthetic. It pairs high-performance resistance training protocols and macro intelligence with a local AI assistant powered by Ollama.
 
-The application should feel futuristic, cinematic, premium and powerful. The design inspiration is a combination of:
+---
 
-- Iron Man / Jarvis technology
+## ⚡ Core Features
 
-- Batman's dark technology aesthetic
+### 1. Command Center (`/`)
+- **Today's Mission**: Daily workout objective, target muscle groups, estimated duration, volume breakdown, and progressive overload targets.
+- **Biometric HUD**: Real-time tracking of calories, protein, hydration, BMI category, training streak, and body weight.
+- **Data Visualizations**: 7-day weekly training load bar chart and 6-month historical weight trend powered by Recharts.
+- **Recent Telemetry**: Chronological feed of logged meals, PRs, and completed sessions.
 
-- Apple-level clean UI
+### 2. Tactical Workouts & Custom Protocol Builder (`/workouts`)
+- **7 Pre-Engineered Programs**: Push, Pull, Legs, Upper, Lower, Bro Split, and Arnold Split.
+- **Exercise Cards**: Target muscle, sets, reps, rest intervals, and difficulty tier.
+- **Custom Builder**: Searchable exercise database to forge, configure, and save personalized training routines to the backend database.
 
-- Modern SaaS dashboards
+### 3. Nutrition & Hydration Command (`/nutrition`)
+- **Food Logging Matrix**: Instant food logger with pre-calculated macros (Calories, Protein, Carbs, Fats) and database persistence.
+- **Hydration Array**: Interactive 250ml water intake tracker with progress indicators.
+- **Daily Targets**: Visual progress gauges against daily caloric and macro ceilings.
 
-- Premium fitness applications
+### 4. FORGE AI Neural Assistant (`/assistant`)
+- **Local AI Engine**: Powered by **Ollama** running `hf.co/Qwen/Qwen3-1.7B-GGUF:Q8_0`.
+- **Jarvis-Style HUD Interface**: Fast conversational assistant for custom workout splits, calorie planning, fat-loss advice, and exercise cues.
+- **Dual Architecture**: Zero-latency local LLM with deterministic biomechanical fallback if the local service is offline.
+- **Chat Persistence**: Full conversation history stored in SQLite via Django REST Framework.
 
-Do not create a generic fitness website.
+### 5. Progress Analytics (`/progress`)
+- 6-month weight trends with interactive tooltips.
+- Weekly workout consistency analysis and macro distribution pie charts.
+- Gamified achievement badges (*Iron Streak*, *Century Club*, *Protein Machine*, *Two Plate Bench*).
 
-DESIGN SYSTEM:
+### 6. BMI & Health Optimization (`/bmi`)
+- Instant calculation based on height, weight, age, and gender.
+- Live category indicators (Underweight, Normal, Overweight, Obese).
+- Suggested caloric budgets for cutting, maintaining, and bulking.
 
-Theme:
+### 7. System Settings (`/settings`)
+- Warrior callsign, email, primary directive, and experience level.
+- Biometric calibrations (height, current weight, target weight).
+- Measurement standard toggle (Metric vs. Imperial) and HUD audio preferences.
 
-Dark futuristic interface.
+---
 
-Background:
+## 🛠️ Tech Stack
 
-Near-black.
+| Layer | Technologies |
+|---|---|
+| **Frontend** | React 19, TypeScript, Tailwind CSS v4, TanStack Start & Router, Radix UI, Lucide Icons, Recharts |
+| **Backend** | Python 3.14, Django 6, Django REST Framework, SQLite, django-cors-headers |
+| **AI Inference** | Ollama (`hf.co/Qwen/Qwen3-1.7B-GGUF:Q8_0`) |
+| **Build Tooling** | Vite 8, Nitro Server |
+| **Automation** | Windows Batch Launcher (`start.bat`) |
 
-Primary accent:
+---
 
-#ff3b3b
+## 🚀 Quick Start (Single Windows Launcher)
 
-Secondary surfaces:
+The fastest way to launch the entire application (Backend + Frontend + Ollama) is the included single-click launcher:
 
-#111111
-
-#181818
-
-#222222
-
-Typography:
-
-Inter or a similar modern sans-serif font.
-
-Use:
-
-- Large spacing
-
-- Rounded cards
-
-- Subtle glassmorphism
-
-- Smooth hover animations
-
-- Glow effects only where appropriate
-
-- Premium dashboard layouts
-
-- Responsive design
-
-APPLICATION NAME:
-
-FORGE AI
-
-TAGLINE:
-
-Forge Your Strongest Self.
-
-CORE PAGES:
-
-1. Dashboard
-
-2. Workouts
-
-3. Music
-
-4. Progress
-
-5. BMI Calculator
-
-6. Nutrition
-
-7. FORGE AI Assistant
-
-8. Settings
-
-9. Login
-
-10. Registration
-
-DASHBOARD:
-
-Create a powerful dashboard containing:
-
-- Today's Mission
-
-- Current workout
-
-- Workout completion percentage
-
-- Calories consumed
-
-- Daily calorie goal
-
-- Protein consumed
-
-- Water intake
-
-- BMI
-
-- Workout streak
-
-- Weight progress
-
-- Weekly activity chart
-
-- Recent activity
-
-- Motivational message
-
-Add a fixed sidebar containing:
-
-Dashboard
-
-Workouts
-
-Music
-
-Progress
-
-BMI Calculator
-
-Nutrition
-
-FORGE AI
-
-Settings
-
-WORKOUTS PAGE:
-
-Allow users to explore and build workouts.
-
-Include:
-
-- Push
-
-- Pull
-
-- Legs
-
-- Upper
-
-- Lower
-
-- Bro Split
-
-- Arnold Split
-
-- Custom Workout Builder
-
-Each workout should contain exercise cards with:
-
-Exercise name
-
-Target muscle
-
-Sets
-
-Reps
-
-Rest time
-
-Difficulty
-
-NUTRITION PAGE:
-
-Include:
-
-- Calories
-
-- Protein
-
-- Carbohydrates
-
-- Fats
-
-- Water
-
-- Daily nutrition goals
-
-- Food logging interface
-
-BMI PAGE:
-
-Allow users to enter:
-
-- Height
-
-- Weight
-
-- Age
-
-- Gender
-
-Display:
-
-- BMI
-
-- BMI category
-
-- Health interpretation
-
-- Suggested calorie information
-
-PROGRESS PAGE:
-
-Create:
-
-- Weight chart
-
-- Workout consistency chart
-
-- Nutrition statistics
-
-- Weekly progress
-
-- Monthly progress
-
-- Achievement badges
-
-MUSIC PAGE:
-
-Create workout playlists for:
-
-- Phonk
-
-- Hip Hop
-
-- Hardstyle
-
-- Metal
-
-- Rock
-
-- Cinematic
-
-FORGE AI ASSISTANT:
-
-Create a dedicated futuristic AI chat interface.
-
-The AI should feel like a personal fitness assistant.
-
-Users should be able to ask:
-
-"Create a Push workout"
-
-"How many calories should I eat?"
-
-"How do I lose fat?"
-
-"Suggest chest exercises"
-
-"Show my progress"
-
-"Recommend gym music"
-
-Initially create the AI interface and use mock intelligent responses.
-
-ARCHITECTURE:
-
-Build reusable components.
-
-Use clean file organization.
-
-Create a responsive desktop-first application that also works properly on tablets and mobile.
-
-The final result should feel like a real startup product, not a college project.
-
-## AI Integration (Local Ollama Engine)
-
-FORGE AI utilizes local LLM inference powered by **Ollama**:
-- **Model**: `hf.co/Qwen/Qwen3-1.7B-GGUF:Q8_0`
-- **Fallback Engine**: Built-in deterministic biomechanics & tactical nutrition heuristic core if Ollama is paused.
-
-## Quick Start (Single Windows Batch File)
-
-Double click `start.bat` or run in terminal:
-
-```sh
-start.bat
+```cmd
+.\start.bat
 ```
 
-This will automatically:
-1. Verify Ollama local service and calibrate `hf.co/Qwen/Qwen3-1.7B-GGUF:Q8_0`.
-2. Initialize the Python virtual environment and install Django dependencies.
-3. Run database migrations and seed default workouts, meals, biometrics, and neural assistant directives.
-4. Start the Django backend REST API server on `http://127.0.0.1:8000/api/`.
-5. Launch the React + Tailwind frontend development server.
+### What `start.bat` executes automatically:
+1. **Ollama Check**: Detects if Ollama is running on port `11434`; starts `ollama serve` if needed and verifies the `Qwen3-1.7B` model.
+2. **Python Environment**: Verifies `backend\venv`, creates it if missing, and installs all dependencies from `requirements.txt`.
+3. **Database Migration & Seed**: Applies Django database migrations and seeds pre-built splits, meals, and default profiles.
+4. **Spawns Backend Core**: Starts the Django API server on `http://127.0.0.1:8000/api/` in a dedicated terminal.
+5. **Spawns Frontend Core**: Starts Vite development server on `http://localhost:3000` in a dedicated terminal.
+6. **Browser Auto-Launch**: Opens `http://localhost:3000` automatically in your default browser.
 
-## Manual Development
+---
 
-### Backend (Django + Django REST Framework)
+## 💻 Manual Setup & Development
+
+If you prefer running services manually in separate terminals:
+
+### 1. Prerequisites
+- **Node.js** (v18+ or v20+)
+- **Python** (3.11+)
+- **Ollama** installed with the model:
+  ```sh
+  ollama pull hf.co/Qwen/Qwen3-1.7B-GGUF:Q8_0
+  ```
+
+### 2. Backend Setup (Django)
 ```sh
 cd backend
 python -m venv venv
@@ -311,8 +103,72 @@ python manage.py seed_data
 python manage.py runserver 127.0.0.1:8000
 ```
 
-### Frontend (React + Tailwind CSS)
+### 3. Frontend Setup (React + Tailwind)
 ```sh
 npm install
 npm run dev
 ```
+
+The frontend will run at `http://localhost:3000` and communicate with Django at `http://127.0.0.1:8000/api/`.
+
+---
+
+## 📡 REST API Reference
+
+| Endpoint | Method | Description |
+|---|---|---|
+| `/api/dashboard/` | `GET` | Aggregated dashboard metrics, macros, streak, and recent logs |
+| `/api/workouts/` | `GET`, `POST` | List preset splits or save a new custom workout routine |
+| `/api/workouts/<slug>/` | `GET`, `DELETE` | Retrieve or delete a workout protocol |
+| `/api/nutrition/items/` | `GET`, `POST` | List logged meals or log a new meal item |
+| `/api/nutrition/items/<id>/` | `DELETE` | Remove a logged meal from database |
+| `/api/nutrition/goals/` | `GET`, `PATCH` | Retrieve or update daily calorie/macro/hydration goals |
+| `/api/weight/` | `GET`, `POST` | Retrieve weight history or record new bodyweight |
+| `/api/settings/` | `GET`, `PATCH` | Retrieve or update user profile parameters and biometrics |
+| `/api/ai/chat/` | `GET`, `POST` | Fetch chat history or submit a query to Ollama Qwen3-1.7B |
+
+---
+
+## 📂 Project Structure
+
+```
+iron-evolve/
+├── backend/                       # Django Backend
+│   ├── api/                       # DRF Application
+│   │   ├── management/commands/   # Database seed commands
+│   │   ├── migrations/            # Django database migrations
+│   │   ├── models.py              # Workouts, Nutrition, Settings, Chat models
+│   │   ├── serializers.py         # DRF Serializers
+│   │   ├── urls.py                # API routing
+│   │   └── views.py               # API Views & Ollama LLM integration
+│   ├── forge_backend/             # Django settings & root URLs
+│   ├── manage.py                  # Django CLI
+│   └── requirements.txt           # Python dependencies
+│
+├── src/                           # React Frontend
+│   ├── components/
+│   │   ├── forge/                 # AppShell, Navigation, Panels, StatCards
+│   │   └── ui/                    # Radix UI design system primitives
+│   ├── lib/
+│   │   ├── api.ts                 # Centralized API client connecting to Django
+│   │   └── forge-data.ts          # Static workout library & fallback datasets
+│   ├── routes/                    # File-based TanStack routes
+│   │   ├── index.tsx              # Command Center / Dashboard
+│   │   ├── workouts.tsx           # Programs & Custom Builder
+│   │   ├── nutrition.tsx          # Macro & Hydration Tracker
+│   │   ├── assistant.tsx          # FORGE AI (Ollama Local Chat)
+│   │   ├── progress.tsx           # Charts & Badges
+│   │   ├── bmi.tsx                # BMI Calculator
+│   │   └── settings.tsx           # Biometrics & Preferences
+│   └── styles.css                 # Tailwind CSS v4 design tokens & glow utilities
+│
+├── start.bat                      # 1-click Windows launcher for Ollama, Django & React
+├── vite.config.ts                 # Vite bundler configuration
+└── package.json                   # Node dependencies & scripts
+```
+
+---
+
+## 🔒 Security
+
+Personal access tokens and local environment variables are never committed to version control. SQLite databases (`*.sqlite3`) and Python virtual environments (`backend/venv`) are ignored via `.gitignore`.
