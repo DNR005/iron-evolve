@@ -290,13 +290,34 @@ Continue developing this project in the [Lovable editor](https://lovable.dev/pro
 - **Stay in sync**: every change made in Lovable is committed straight to this repository.
 - **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
-## Development
+## Quick Start (Single Windows Batch File)
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Double click `start.bat` or run in terminal:
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+start.bat
+```
+
+This will automatically:
+1. Initialize the Python virtual environment and install Django dependencies.
+2. Run database migrations and seed default workouts, meals, biometrics, and neural assistant directives.
+3. Start the Django backend REST API server on `http://127.0.0.1:8000/api/`.
+4. Launch the React + Tailwind frontend development server.
+
+## Manual Development
+
+### Backend (Django + Django REST Framework)
+```sh
+cd backend
+python -m venv venv
+.\venv\Scripts\pip install -r requirements.txt
+python manage.py migrate
+python manage.py seed_data
+python manage.py runserver 127.0.0.1:8000
+```
+
+### Frontend (React + Tailwind CSS)
+```sh
+npm install
 npm run dev
 ```
